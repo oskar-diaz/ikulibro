@@ -317,7 +317,7 @@ body
     right: 0
     width: 50%
     height: 100%
-    background: url(../assets/portrait.jpg) no-repeat top left
+    background: url(<%= asset_path "portrait.jpg"%>) no-repeat top left
     background-size: cover
   div
     padding: 10%
@@ -403,21 +403,21 @@ body
 /* Custom book covers
 
 .no-csstransforms3d .book[data-book="book-2"], .no-js .book[data-book="book-2"]
-  background: url(../assets/small_cover.jpg)
-  background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.1) 0%, rgba(211, 211, 211, 0.1) 5%, rgba(255, 255, 255, 0.15) 5%, rgba(255, 255, 255, 0.1) 9%, rgba(0, 0, 0, 0.01) 100%), url(../assets/small_cover.jpg), #f6a7a5
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(211, 211, 211, 0.1) 5%, rgba(255, 255, 255, 0.15) 5%, rgba(255, 255, 255, 0.1) 9%, rgba(0, 0, 0, 0.01) 100%), url(../assets/small_cover.jpg), #f6a7a5
+  background: url(<%= asset_path "small_cover.jpg"%>)
+  background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.1) 0%, rgba(211, 211, 211, 0.1) 5%, rgba(255, 255, 255, 0.15) 5%, rgba(255, 255, 255, 0.1) 9%, rgba(0, 0, 0, 0.01) 100%), url(<%= asset_path "small_cover.jpg"%>), #f6a7a5
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(211, 211, 211, 0.1) 5%, rgba(255, 255, 255, 0.15) 5%, rgba(255, 255, 255, 0.1) 9%, rgba(0, 0, 0, 0.01) 100%), url(<%= asset_path "small_cover.jpg"%>), #f6a7a5
 
 .book[data-book="book-2"]
   .front
-    background: url(../assets/small_cover.jpg)
-    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.1) 0%, rgba(211, 211, 211, 0.1) 5%, rgba(255, 255, 255, 0.15) 5%, rgba(255, 255, 255, 0.1) 9%, rgba(0, 0, 0, 0.01) 100%), url(../assets/small_cover.jpg), #f6a7a5
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(211, 211, 211, 0.1) 5%, rgba(255, 255, 255, 0.15) 5%, rgba(255, 255, 255, 0.1) 9%, rgba(0, 0, 0, 0.01) 100%), url(../assets/small_cover.jpg), #f6a7a5
+    background: url(<%= asset_path "small_cover.jpg"%>)
+    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.1) 0%, rgba(211, 211, 211, 0.1) 5%, rgba(255, 255, 255, 0.15) 5%, rgba(255, 255, 255, 0.1) 9%, rgba(0, 0, 0, 0.01) 100%), url(<%= asset_path "small_cover.jpg"%>), #f6a7a5
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(211, 211, 211, 0.1) 5%, rgba(255, 255, 255, 0.15) 5%, rgba(255, 255, 255, 0.1) 9%, rgba(0, 0, 0, 0.01) 100%), url(<%= asset_path "small_cover.jpg"%>), #f6a7a5
   .inner
     border-color: #f6a7a5
   .cover::before
-    background: url(../assets/spine2.svg)
-    background: -webkit-linear-gradient(left, transparent 0%, rgba(0, 0, 0, 0.01) 1%, rgba(0, 0, 0, 0.1) 50%, transparent 100%), url(../assets/spine2.svg), #f6a7a5
-    background: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.01) 1%, rgba(0, 0, 0, 0.1) 50%, transparent 100%), url(../assets/spine2.svg), #f6a7a5
+    background: url(<%= asset_path "spine2.svg"%>)
+    background: -webkit-linear-gradient(left, transparent 0%, rgba(0, 0, 0, 0.01) 1%, rgba(0, 0, 0, 0.1) 50%, transparent 100%), url(<%= asset_path "spine2.svg"%>), #f6a7a5
+    background: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.01) 1%, rgba(0, 0, 0, 0.1) 50%, transparent 100%), url(<%= asset_path "spine2.svg"%>), #f6a7a5
 
 /* border around bookblock same as book cover color
 
