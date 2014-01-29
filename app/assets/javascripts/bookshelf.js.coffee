@@ -97,6 +97,8 @@ http://www.codrops.com
   Book::_open = ->
     docscroll = scrollY()
     classie.add @el, "open"
+    classie.remove @el, "close"
+    classie.remove @bbWrapper, "hide"
     classie.add @bbWrapper, "show"
     self = this
     onOpenBookEndFn = (ev) ->

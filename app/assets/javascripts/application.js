@@ -18,6 +18,5 @@
 //= require bookblock.min
 //= require classie
 //= require bookshelf
-//= require_tree .
 
 $(function(){ $(document).foundation(); });
