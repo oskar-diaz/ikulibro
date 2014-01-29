@@ -1,0 +1,47 @@
+!!!
+%html{lang: "en"}
+  %head
+    %meta{charset: "utf-8"}/
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+    %title= content_for?(:title) ? yield(:title) : "foundation-rails"
+    = stylesheet_link_tag  "application"
+    = javascript_include_tag "vendor/modernizr"
+    = csrf_meta_tags
+  %body
+    / Nav Bar
+    .row
+      .large-12.columns
+        .nav-bar.right
+          %ul.button-group
+            %li
+              %a.button{href: "#"} Link 1
+            %li
+              %a.button{href: "#"} Link 2
+            %li
+              %a.button{href: "#"} Link 3
+            %li
+              %a.button{href: "#"} Link 4
+        %h1
+          Afinando un sueño
+          %small El ikulibro
+        %hr/
+    / End Nav
+    / Main Page Content and Sidebar
+    .row
+      .large-12.columns{role: "content"}
+        = yield
+
+    / Footer
+    %footer.row
+      .large-12.columns
+        %hr/
+        .row
+          .large-6.columns
+            %p Libro "Afinando un sueño" escrito por Oskar Díaz Toscano. Diseño y maquetación: Fran Valenciano
+          .large-6.columns
+            %ul.inline-list.right
+              %li
+                %a{href: "#"} Ikublog
+              %li
+                %a{href: "#"} Historias de un abstracto
+  = javascript_include_tag "application"
