@@ -10,6 +10,9 @@
  *
  *= require_self
  *= require foundation_and_overrides
+ *= require demo
+ *= require bookblock
+ *= require component
 
  *= require_tree .
  */

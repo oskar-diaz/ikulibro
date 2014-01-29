@@ -14,6 +14,10 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+//= require modernizr.custom
+//= require bookblock.min
+//= require classie
+//= require bookshelf
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
