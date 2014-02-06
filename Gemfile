@@ -7,7 +7,7 @@ gem 'rails', '4.0.0'
 group :development do
   gem 'debugger'
   gem 'nokogiri'
-  gem 'sqlite3'
+  gem 'mysql2'
 
   # gem 'better_errors'
   # gem 'binding_of_caller'
@@ -18,7 +18,7 @@ gem 'awesome_print'
 
 group :production do
   # Use postgresql as the database for Active Record
-  #gem 'pg'
+  gem 'pg'
 
   gem 'rails_12factor'
 end
@@ -27,7 +27,7 @@ gem 'foundation-rails'
 gem 'quiet_assets'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+#gem 'sass-rails', '~> 4.0.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
