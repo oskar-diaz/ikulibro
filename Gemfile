@@ -7,6 +7,7 @@ gem 'rails', '4.0.0'
 group :development do
   gem 'debugger'
   gem 'nokogiri'
+  gem 'sqlite3'
 
   # gem 'better_errors'
   # gem 'binding_of_caller'
@@ -14,7 +15,6 @@ end
 
 gem 'haml'
 gem 'awesome_print'
-  gem 'sqlite3'
 
 group :production do
   # Use postgresql as the database for Active Record
