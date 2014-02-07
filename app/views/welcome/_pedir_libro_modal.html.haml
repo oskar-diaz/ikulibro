@@ -7,10 +7,10 @@
     .row
       .large-6.columns
         %label Tu nombre
-        %input#nombre{:type=> "text"}
+        %input#nombre{:type=> "text", :required => true}
       .large-6.columns
         %label Tu email
-        %input#email{:type=> "email"}
+        %input#email{:type=> "email", :required => true}
     .row
       .large-12.columns
         %label Dirección para el cartero
