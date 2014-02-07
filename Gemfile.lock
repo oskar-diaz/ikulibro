@@ -50,6 +50,7 @@ GEM
       sass (>= 3.2.0)
     haml (4.0.3)
       tilt
+    high_voltage (2.1.0)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (1.5.3)
@@ -70,6 +71,12 @@ GEM
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     polyglot (0.3.3)
+    postmark (1.1.0)
+      json
+      rake
+    postmark-rails (0.6.0)
+      actionmailer (>= 3.0.0)
+      postmark (~> 1.1.0)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
@@ -132,10 +139,12 @@ DEPENDENCIES
   debugger
   foundation-rails
   haml
+  high_voltage
   jbuilder (~> 1.2)
   jquery-rails
   mysql2
   nokogiri
+  postmark-rails
   quiet_assets
   rails (= 4.0.0)
   rails_12factor

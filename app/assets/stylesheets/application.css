@@ -13,6 +13,8 @@
  *= require demo
  *= require bookblock
  *= require component
+ *= require alertify.core
+ *= require alertify.default
 
  *= require_tree .
  */

@@ -1,11 +1,14 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
-  $(document).on "click", "#pedirLibro .close-reveal-modal", ->
-    $('#pedirLibro').foundation('reveal', 'close')
-    true
-
-  $('#pedir').click ->
-    $('#pedirLibro').foundation('reveal', 'open')
-    false
+  $('#send').click ->
+    $.ajax
+      type: 'POST'
+      url: '/contacto'
+      data:
+        _method: "put"
+        name: $('#name').val()
+        email: $('#email').val()
+        address: $('#email').val()
+        comments: $('#email').val()
+      complete: (data) ->
+        $('#pedirLibro').foundation('reveal', 'close')
+        alertify.alert(data.responseText)

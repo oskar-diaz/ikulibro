@@ -4,22 +4,19 @@ ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 gem 'mysql2'
+gem 'postmark-rails'
+gem 'high_voltage'
 
 group :development do
   gem 'debugger'
   gem 'nokogiri'
-
-  # gem 'better_errors'
-  # gem 'binding_of_caller'
+  gem 'quiet_assets'
 end
 
 gem 'haml'
 gem 'awesome_print'
 
 group :production do
-  # Use postgresql as the database for Active Record
-  # gem 'pg'
-
   gem 'rails_12factor'
 end
 

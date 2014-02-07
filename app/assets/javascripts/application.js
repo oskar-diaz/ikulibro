@@ -18,6 +18,7 @@
 //= require bookblock.min
 //= require classie
 //= require bookshelf
+//= require alertify
 //= require welcome
 
 $(function(){ $(document).foundation(); });
