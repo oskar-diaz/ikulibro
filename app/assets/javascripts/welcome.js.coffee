@@ -5,10 +5,10 @@ $ ->
       url: '/contacto'
       data:
         _method: "put"
-        name: $('#name').val()
+        name: $('#nombre').val()
         email: $('#email').val()
-        address: $('#email').val()
-        comments: $('#email').val()
+        address: $('#address').val()
+        comments: $('#comments').val()
       complete: (data) ->
         $('#pedirLibro').foundation('reveal', 'close')
         alertify.alert(data.responseText)
