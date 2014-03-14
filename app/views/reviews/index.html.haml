@@ -17,5 +17,8 @@
       %p.name=review.name
       .text
         = simple_format review.review
+      - if review.images
+        - review.images.each do |img|
+          = image_tag  img.url
     - unless idx + 1 == @reviews.size
       %hr
