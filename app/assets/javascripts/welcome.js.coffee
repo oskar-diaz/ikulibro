@@ -24,3 +24,7 @@ $ ->
     $(this).addClass('shake')
     ), ->
     $(this).removeClass('shake')
+
+  setInterval(->
+    $('#reacciones').removeClass('bounceInRight').toggleClass('tada')
+  , 5000)
