@@ -7,7 +7,7 @@ gem 'mysql2'
 gem 'postmark-rails'
 gem 'high_voltage'
 gem 'quiet_assets'
-gem 'haml'ruby
+gem 'haml'
 gem 'awesome_print'
 gem 'animate-sass'
 gem 'foundation-rails'
@@ -18,7 +18,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 group :development do
-  gem 'debugger'
   gem 'nokogiri'
 end
 

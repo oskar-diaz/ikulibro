@@ -8,7 +8,7 @@
     = csrf_meta_tags
   %body{:data => {:no => {:turbolink=>""}}}
     / Nav Bar
-    = render 'pedir_libro_modal'
+    = render '/welcome/pedir_libro_modal'
     .row
       .large-12.columns
         .nav-bar.right
@@ -18,9 +18,10 @@
             %li{:style => "position: relative; top: 10px"}
               = image_tag "here.gif"
               <- la historia aqui
-        %h1
-          Afinando un sueño
-          %small El ikulibro
+        %a{href: "/"}
+          %h1
+            Afinando un sueño
+            %small El ikulibro
         %hr/
     / End Nav
     / Main Page Content and Sidebar
