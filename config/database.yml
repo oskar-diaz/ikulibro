@@ -7,7 +7,7 @@ development:
   adapter: mysql2
   database: ikulibro
   username: root
-  password: 
+  password: pass
   pool: 5
   timeout: 5000
 
