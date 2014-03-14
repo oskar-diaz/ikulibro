@@ -15,6 +15,6 @@
  *= require component
  *= require alertify.core
  *= require alertify.default
-
+*= require animate
  *= require_tree .
  */

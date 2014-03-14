@@ -7,12 +7,19 @@
     background-color: black
     color: white
     margin-bottom: 20px
+    font-family: Courier
   .review
     margin-bottom: 10px
     padding: 10px
     p.name
       color: black
       font-size: 25px
+    .text p
+      font-family: 'Neucha', cursive
+      font-size: 18px
+      line-height: auto
+      margin-bottom: 15px
+      padding-left: 10px
     &.a
       background-color: #f2f9f9
       border-right: 2px solid gray
@@ -23,3 +30,5 @@
       border-top: 2px solid gray
       p.name
         text-align: right
+  .review:hover .text p
+    font-size: 20px

@@ -1,4 +1,4 @@
-#enlaces
+#enlaces.bounceInDown.animated
   %h3
     Reseñas:
   %a{href: "http://paelladekimchi.com/afinando-un-sue%C3%B1o-el-ikulibro"}
@@ -10,11 +10,12 @@
   %a{href: "http://www.nerelorco.com/se-van-a/Tokio/el-ikulibro-ii/"}
     La Nere y el Lorco: El ikulibro II
   %hr
-#reviews
+#reviews.bounceInUp.animated
   %h2 Bandeja de entrada
   -@reviews.each_with_index do |review,idx|
     .review{:class => (idx % 2 ==0 ? "a" : "b")}
       %p.name=review.name
-      %p.text= simple_format review.review
+      .text
+        = simple_format review.review
     - unless idx + 1 == @reviews.size
       %hr
