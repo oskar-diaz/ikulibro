@@ -9,4 +9,9 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Rails.application.config.secret_key_base = ENV.fetch("SECRET_KEY_BASE")
+if Rails.env.production?
+  Rails.application.config.secret_key_base = ENV.fetch("SECRET_KEY_BASE")
+else
+  # Local dev/test convenience; production must set SECRET_KEY_BASE.
+  Rails.application.config.secret_key_base = ENV["SECRET_KEY_BASE"] || SecureRandom.hex(64)
+end

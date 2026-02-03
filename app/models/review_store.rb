@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require "csv"
+require "net/http"
+require "uri"
 require "yaml"
 
 class ReviewEntry
@@ -28,6 +31,8 @@ end
 
 class ReviewStore
   DATA_PATH = Rails.root.join("data", "reviews.yml")
+  CSV_URL_ENV = "REVIEWS_CSV_URL"
+  CSV_CACHE_TTL = 60
 
   class << self
     def all_desc
@@ -41,15 +46,23 @@ class ReviewStore
 
     def reload!
       @all = load_entries
-      @mtime = data_mtime
+      if csv_url?
+        @csv_fetched_at = Time.now
+      else
+        @mtime = data_mtime
+      end
       @all
     end
 
     private
 
     def reload_if_changed!
-      current_mtime = data_mtime
-      reload! if @mtime != current_mtime
+      if csv_url?
+        reload_csv_if_stale!
+      else
+        current_mtime = data_mtime
+        reload! if @mtime != current_mtime
+      end
     end
 
     def data_mtime
@@ -57,6 +70,15 @@ class ReviewStore
     end
 
     def load_entries
+      if csv_url?
+        entries = load_from_csv
+        return entries if entries
+      end
+
+      load_from_yaml
+    end
+
+    def load_from_yaml
       raw = File.exist?(DATA_PATH) ? YAML.load_file(DATA_PATH) : {}
       items = raw["reviews"] || []
 
@@ -79,6 +101,53 @@ class ReviewStore
           images: images
         )
       end
+    end
+
+    def csv_url
+      ENV.fetch(CSV_URL_ENV, "").strip
+    end
+
+    def csv_url?
+      !csv_url.empty?
+    end
+
+    def reload_csv_if_stale!
+      return if @csv_fetched_at && (Time.now - @csv_fetched_at) < CSV_CACHE_TTL
+
+      reload!
+    end
+
+    def load_from_csv
+      uri = URI.parse(csv_url)
+      response = Net::HTTP.get_response(uri)
+      return nil unless response.is_a?(Net::HTTPSuccess)
+
+      CSV.parse(response.body, headers: true).map do |row|
+        images = split_images(row["images"]).map.with_index(1) do |url, idx|
+          ReviewImage.new(
+            id: "#{row['id']}-#{idx}",
+            url: url,
+            created_at: row["created_at"],
+            updated_at: row["updated_at"]
+          )
+        end
+
+        ReviewEntry.new(
+          id: row["id"],
+          name: row["name"],
+          review: row["review"],
+          created_at: row["created_at"],
+          updated_at: row["updated_at"],
+          images: images
+        )
+      end
+    rescue StandardError => e
+      Rails.logger.warn("ReviewStore CSV load failed: #{e.class}: #{e.message}")
+      nil
+    end
+
+    def split_images(value)
+      value.to_s.split("|").map(&:strip).reject(&:empty?)
     end
   end
 end
