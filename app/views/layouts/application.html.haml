@@ -6,6 +6,7 @@
     %title Afinando un sueño, el ikulibro
     = stylesheet_link_tag  "application"
     %link{href: "https://fonts.googleapis.com/css?family=Neucha", rel: "stylesheet", type: "text/css"}/
+    %link{href: "https://fonts.googleapis.com/css2?family=Farsan&display=swap", rel: "stylesheet", type: "text/css"}/
     = csrf_meta_tags
     = csp_meta_tag
   %body
@@ -32,6 +33,21 @@
     .row
       .large-12.columns{role: "content"}
         = yield
+    .row
+      .large-12.columns
+        .insta-videos
+          %h5 Videos relacionados
+          .insta-embed
+            %p.insta-title Presentación de la nueva edición
+            %blockquote.instagram-media{data: { instgrm_captioned: true, instgrm_permalink: "https://www.instagram.com/p/DUUzTEjEfaQ/" }, style: "background:#fff; border:0; margin:0 auto; max-width:250px; width:100%"}
+              %a{href: "https://www.instagram.com/p/DUUzTEjEfaQ/"} Ver en Instagram
+          %script{async: true, defer: true, src: "https://www.instagram.com/embed.js"}
+        .news
+          %h5 Noticias
+          %p
+            %span.news-date 4 Feb
+            %span.news-note
+              Anunciada la reedición en Instagram. Versión en papel en revisión por parte de Amazon. Ultimando versión epub. Enlaces a Amazon todavía pendientes.
 
     / Footer
     %footer.row.animated.flipInX
