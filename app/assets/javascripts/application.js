@@ -18,6 +18,7 @@
 //= require bookshelf
 //= require alertify
 //= require welcome
+//= require reviews
 
 $(function () {
   $(document).foundation();

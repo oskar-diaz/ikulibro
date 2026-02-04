@@ -8,6 +8,51 @@
     color: white
     margin-bottom: 20px
     font-family: Courier
+  .reviews-tabs
+    display: flex
+    align-items: center
+    gap: 12px
+    justify-content: center
+    margin-bottom: 20px
+    flex-wrap: wrap
+  .tab-link
+    display: inline-block
+    padding: 8px 12px
+    border: 1px solid black
+    background: #fff
+    color: black
+    font-weight: 700
+    position: relative
+  .tab-link .badge
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    min-width: 18px
+    height: 18px
+    padding: 0 5px
+    margin-left: 6px
+    border-radius: 999px
+    background: #e53935
+    color: #fff
+    font-size: 11px
+    font-weight: 700
+    line-height: 1
+  .tab-link.active
+    background: black
+    color: white
+  .reviews-panel
+    display: none
+  .no-reviews
+    display: inline-flex
+    align-items: center
+    gap: 8px
+    justify-content: center
+    width: 100%
+    text-align: center
+    padding: 18px 0
+  .no-reviews img
+    width: auto
+    height: auto
   .review
     margin-bottom: 10px
     padding: 10px
@@ -38,6 +83,14 @@
       line-height: auto
       margin-bottom: 15px
       padding-left: 10px
+    .review-date
+      position: relative
+      z-index: 2
+      margin: 6px 10px 0
+      font-size: 12px
+      font-style: italic
+      color: rgba(0, 0, 0, 0.45)
+      text-align: right
     &.a
       background-color: #f2f9f9
       border-right: 2px solid gray

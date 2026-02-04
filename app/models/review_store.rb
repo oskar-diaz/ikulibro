@@ -44,6 +44,20 @@ class ReviewStore
       @all ||= load_entries
     end
 
+    def from_csv_url(url)
+      url = url.to_s.strip
+      return [] if url.empty?
+
+      cache_entry = csv_cache[url]
+      if cache_entry && (Time.now - cache_entry[:fetched_at]) < CSV_CACHE_TTL
+        return cache_entry[:entries]
+      end
+
+      entries = load_from_csv(url) || []
+      csv_cache[url] = { entries: entries, fetched_at: Time.now }
+      entries
+    end
+
     def reload!
       @all = load_entries
       if csv_url?
@@ -71,7 +85,7 @@ class ReviewStore
 
     def load_entries
       if csv_url?
-        entries = load_from_csv
+        entries = load_from_csv(csv_url)
         return entries if entries
         raise "REVIEWS_CSV_URL set but CSV could not be loaded"
       end
@@ -118,8 +132,8 @@ class ReviewStore
       reload!
     end
 
-    def load_from_csv
-      response = fetch_csv_response(csv_url)
+    def load_from_csv(url)
+      response = fetch_csv_response(url)
       unless response&.is_a?(Net::HTTPSuccess)
         Rails.logger.warn("ReviewStore CSV HTTP error: #{response&.code} #{response&.message}")
         return nil
@@ -160,6 +174,10 @@ class ReviewStore
 
     def split_images(value)
       value.to_s.split("|").map(&:strip).reject(&:empty?)
+    end
+
+    def csv_cache
+      @csv_cache ||= {}
     end
 
     def fetch_csv_response(url, limit = 5)

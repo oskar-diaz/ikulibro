@@ -1,14 +1,51 @@
 #reviews.bounceInUp.animated
-  %h2 Bandeja de entrada
-  -@reviews.each_with_index do |review,idx|
-    .review{:class => (idx % 2 ==0 ? "a" : "b")}
-      %p.name=review.name
-      .text
-        = simple_format review.review
-      - if review.images
-        - review.images.each do |img|
-          = image_tag  img.url
-      .n="#{idx+1}"
-    - unless idx + 1 == @reviews.size
+  %h2 Reseñas
+  .reviews-tabs
+    %a.tab-link.active{href: "#", data: { tab: "crowdfunding" }}
+      Primera edición (crowdfunding)
+      %span.badge= @reviews_crowdfunding.size
+    %a.tab-link{href: "#", data: { tab: "amazon" }}
+      Segunda edición (amazon)
+      %span.badge= @reviews_amazon.size
+  .reviews-panel{data: { tab: "crowdfunding" }}
+    - if @reviews_crowdfunding.any?
+      -@reviews_crowdfunding.each_with_index do |review,idx|
+        .review{:class => (idx % 2 ==0 ? "a" : "b")}
+          %p.name=review.name
+          .text
+            = simple_format review.review
+          - if review.images
+            - review.images.each do |img|
+              = image_tag  img.url
+          - date_text = human_review_date(review.created_at)
+          - if date_text
+            %p.review-date= date_text
+          .n="#{idx+1}"
+        - unless idx + 1 == @reviews_crowdfunding.size
 
-      %hr
+          %hr
+    - else
+      %p.no-reviews
+        Esperando impacientemente a que alguien se lo lea...
+        = image_tag "tumbleweed.gif", alt: ""
+  .reviews-panel{data: { tab: "amazon" }}
+    - if @reviews_amazon.any?
+      -@reviews_amazon.each_with_index do |review,idx|
+        .review{:class => (idx % 2 ==0 ? "a" : "b")}
+          %p.name=review.name
+          .text
+            = simple_format review.review
+          - if review.images
+            - review.images.each do |img|
+              = image_tag  img.url
+          - date_text = human_review_date(review.created_at)
+          - if date_text
+            %p.review-date= date_text
+          .n="#{idx+1}"
+        - unless idx + 1 == @reviews_amazon.size
+
+          %hr
+    - else
+      %p.no-reviews
+        Esperando impacientemente a que alguien se lo lea...
+        = image_tag "tumbleweed.gif", alt: ""

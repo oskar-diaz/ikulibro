@@ -18,6 +18,7 @@ gem 'jquery-rails'
 
 group :development do
   gem 'nokogiri'
+  gem 'dotenv-rails'
 end
 
 group :doc do
