@@ -180,3 +180,23 @@ a:hover
     margin-bottom: 8px
   .details ul li:first-child
     font-size: 12px
+
+@media screen and (max-width: 900px) and (orientation: landscape)
+  .bb-custom-wrapper
+    padding: 0
+    border-width: 0
+    overflow: hidden
+  .bb-bookblock
+    height: auto
+    min-height: 100vh
+  .bb-custom-wrapper .page-layout-4
+    background-size: 95% auto !important
+    background-position: center center
+  .bb-custom-wrapper .page-layout-4 .page-image
+    display: block
+    width: 100%
+    height: auto
+  .bb-custom-side
+    overflow: auto
+    -webkit-overflow-scrolling: touch
+    touch-action: pan-y

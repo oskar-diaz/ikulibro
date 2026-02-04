@@ -113,6 +113,16 @@
   };
 
   Book.prototype._open = function () {
+    if (this._shouldShowMobileHint()) {
+      this._showMobileHint();
+      return;
+    }
+
+    this._ensureScrollableImages();
+    this._openNow();
+  };
+
+  Book.prototype._openNow = function () {
     docscroll = scrollY();
     classie.add(this.el, 'open');
     classie.remove(this.el, 'close');
@@ -130,6 +140,69 @@
     } else {
       onOpenBookEndFn.call();
     }
+  };
+
+  Book.prototype._shouldShowMobileHint = function () {
+    if (this._mobileHintShown) {
+      return false;
+    }
+
+    return (
+      window.matchMedia &&
+      window.matchMedia('(max-width: 900px) and (orientation: portrait)').matches
+    );
+  };
+
+  Book.prototype._showMobileHint = function () {
+    var self = this;
+    this._mobileHintShown = true;
+    var message =
+      'Pon el móvil en apaisado para poder leer algo porque si no, no vas a ver un pijuelo';
+
+    if (window.alertify && typeof alertify.alert === 'function') {
+      alertify.alert(message, function () {
+        self._ensureScrollableImages();
+        self._openNow();
+      });
+      return;
+    }
+
+    window.alert(message);
+    self._ensureScrollableImages();
+    self._openNow();
+  };
+
+  Book.prototype._ensureScrollableImages = function () {
+    if (!window.matchMedia || !window.matchMedia('(max-width: 900px) and (orientation: landscape)').matches) {
+      return;
+    }
+
+    var pages = this.bbWrapper.querySelectorAll('.page-layout-4');
+    [].slice.call(pages).forEach(function (page) {
+      if (page.querySelector('img.page-image')) {
+        return;
+      }
+
+      var src = page.getAttribute('data-image');
+      if (!src) {
+        var bg = window.getComputedStyle(page).backgroundImage;
+        if (!bg || bg === 'none') {
+          return;
+        }
+        var match = bg.match(/url\\(["']?(.*?)["']?\\)/);
+        if (!match || !match[1]) {
+          return;
+        }
+        src = match[1];
+      }
+
+      var img = document.createElement('img');
+      img.className = 'page-image';
+      img.src = src;
+      img.alt = '';
+      page.style.backgroundImage = 'none';
+      page.appendChild(img);
+    });
   };
 
   Book.prototype._close = function () {
