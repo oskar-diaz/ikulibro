@@ -27,6 +27,11 @@
           %h1.site-title.animated.fadeInLeftBig
             Afinando un sueño
             %small El ikulibro
+        %a.download-book{href: asset_path("Afinando un sueño, el ikulibro original.pdf")}
+          = image_tag "download-book.png", alt: ""
+          .download-text
+            %span Descarga el libro original en PDF gratis aquí
+            %small Click derecho para descargar enlace
         %hr/
     / End Nav
     / Main Page Content and Sidebar
@@ -47,6 +52,9 @@
                 %p.insta-title Aclaración del formato sólo texto
                 %blockquote.instagram-media{data: { instgrm_captioned: true, instgrm_permalink: "https://www.instagram.com/p/DUU5619ESCh/" }}
                   %a{href: "https://www.instagram.com/p/DUU5619ESCh/"} Ver en Instagram
+              .insta-card
+                %p.insta-title Lectura del libro original
+                %iframe.yt-frame{src: "https://www.youtube.com/embed/videoseries?list=PLpP9iOt7x41jQR4aAarrZhW1IMKWmiych", title: "Lectura del libro original", allowfullscreen: true, allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share", frameborder: "0"}
             %script{async: true, defer: true, src: "https://www.instagram.com/embed.js"}
           .news
             %h5 Noticias
@@ -54,6 +62,10 @@
               %span.news-date 4 Feb
               %span.news-note
                 Anunciada la reedición en Instagram. Versión en papel en revisión por parte de Amazon. Ultimando versión epub. Enlaces a Amazon todavía pendientes. Solicitada impresión de prueba de la versión de tapa dura.
+            %p
+              %span.news-date 5 Feb
+              %span.news-note
+                Reestablecido el enlace para poder descargar gratis la versión original del libro en PDF. Añadida playlist de youtube con la lectura del libro original.
 
     / Footer
     %footer.row.animated.flipInX

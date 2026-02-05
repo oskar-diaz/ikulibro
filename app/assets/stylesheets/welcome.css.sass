@@ -68,6 +68,30 @@ a:hover
     height: 44px
 .site-title
   width: 550px
+.download-book
+  display: flex
+  align-items: center
+  gap: 10px
+  justify-content: center
+  width: fit-content
+  margin: 8px auto 6px
+  padding: 8px 14px
+  border: 2px solid rgba(0, 0, 0, 0.8)
+  border-radius: 14px
+  background: linear-gradient(135deg, #fff7d6, #ffffff)
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.1)
+  font-family: "Farsan", cursive
+  font-size: 18px
+  color: #111
+  text-decoration: none
+  img
+    width: 28px
+    height: 28px
+    display: block
+  small
+    display: block
+    font-size: 15px
+    color: rgba(0, 0, 0, 0.6)
 .news
   margin: 22px auto 12px
   padding: 16px 18px
@@ -123,6 +147,11 @@ a:hover
     border-radius: 12px
     background: rgba(255, 255, 255, 0.8)
     box-shadow: 0 8px 0 rgba(0, 0, 0, 0.08)
+  .yt-frame
+    width: 100%
+    max-width: 320px
+    height: 180px
+    border: 0
   blockquote.instagram-media
     width: 100% !important
     max-width: 320px !important
@@ -177,6 +206,11 @@ a:hover
     width: 100%
     small
       display: block
+  .download-book
+    width: 100%
+    justify-content: center
+    text-align: center
+    margin-top: 26px
   .bookshelf figure.details-open figcaption
     opacity: 0
     visibility: hidden
@@ -270,6 +304,29 @@ a:hover
     min-width: 0 !important
   .insta-videos
     text-align: center
+  .social-links
+    display: grid
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+    gap: 8px 12px
+    justify-items: center
+    justify-content: center
+    align-items: center
+    margin-left: auto
+    margin-right: auto
+    float: none
+    width: 100%
+  footer .inline-list.right
+    float: none
+    width: 100%
+    text-align: center
+  .social-links.right
+    float: none
+  .social-links .social-link.instagram img
+    width: 48px
+    height: 48px
+  .social-links li
+    width: auto
+    display: block
 
 @media screen and (max-width: 900px) and (orientation: landscape)
   .bb-custom-wrapper
@@ -290,3 +347,9 @@ a:hover
     overflow: auto
     -webkit-overflow-scrolling: touch
     touch-action: pan-y pinch-zoom
+  span, small
+    display: block
+  .download-text
+    display: flex
+    flex-direction: column
+    line-height: 1.2
