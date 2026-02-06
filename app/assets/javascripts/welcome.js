@@ -34,6 +34,10 @@ $(function () {
     }
   );
 
+  $("#pedir").on("click", function () {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  });
+
   setInterval(function () {
     $("#reacciones").removeClass("bounceInRight").toggleClass("tada");
   }, 5000);
