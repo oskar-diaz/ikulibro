@@ -6,7 +6,7 @@
     #scroll-wrap.container
       .main
         #bookshelf.bookshelf
-          %figure.animated.rotateInDownLeft
+          %figure
             .book{"data-book" => "book-2"}
             .buttons
               %a{href: "#"} Echa un ojo
@@ -22,17 +22,82 @@
             .next
               %p.amazon-label Disponible en
               .amazon-links
-                %a.amazon-btn.es.disabled{href: "#"}
+                %a.amazon-btn.es.disabled.random-hover{href: "#"}
                   .btn-text
                     %span Amazon España
                     %small (en preparación)
                   .btn-icon
-                    = image_tag "book.png", alt: ""
-                %a.amazon-btn.jp{href: "https://www.amazon.co.jp/dp/B0GLNN3B2B", target: "_blank", rel: "noopener"}
+                    = image_tag "book.png", alt: "", class: "icon-default"
+                    = image_tag "chiquito.png", alt: "", class: "icon-variant"
+                    = image_tag "ham.png", alt: "", class: "icon-variant"
+                    = image_tag "athletic.png", alt: "", class: "icon-variant"
+                    = image_tag "churros.png", alt: "", class: "icon-variant"
+                    = image_tag "tapas.png", alt: "", class: "icon-variant"
+                    = image_tag "san-fermin.png", alt: "", class: "icon-variant"
+                %a.amazon-btn.jp.random-hover{href: "https://www.amazon.co.jp/dp/B0GLNN3B2B", target: "_blank", rel: "noopener"}
                   .btn-text
-                    %span Amazon Japan
+                    %span Amazon Japón
                   .btn-icon
-                    = image_tag "book.png", alt: ""
+                    = image_tag "book.png", alt: "", class: "icon-default"
+                    = image_tag "sanae.png", alt: "", class: "icon-variant"
+                    = image_tag "onigiri.png", alt: "", class: "icon-variant"
+                    = image_tag "pachinko.png", alt: "", class: "icon-variant"
+                    = image_tag "fuji.png", alt: "", class: "icon-variant"
+                    = image_tag "ramen.png", alt: "", class: "icon-variant"
+                    = image_tag "dordokamaisu.png", alt: "", class: "icon-variant"
+                    = image_tag "drunk copy.png", alt: "", class: "icon-variant"
+                %a.amazon-btn.us.random-hover{href: "https://www.amazon.com/dp/B0GLNN3B2B", target: "_blank", rel: "noopener"}
+                  .btn-text
+                    %span Amazon EEUU
+                  .btn-icon
+                    = image_tag "book.png", alt: "", class: "icon-default"
+                    = image_tag "trump.png", alt: "", class: "icon-variant"
+                    = image_tag "obesity.png", alt: "", class: "icon-variant"
+                    = image_tag "bauer.png", alt: "", class: "icon-variant"
+                    = image_tag "eeuu2.png", alt: "", class: "icon-variant"
+                    = image_tag "walter white.png", alt: "", class: "icon-variant"
+                %a.amazon-btn.ca.random-hover{href: "https://www.amazon.ca/dp/B0GLNN3B2B", target: "_blank", rel: "noopener"}
+                  .btn-text
+                    %span Amazon Canadá
+                  .btn-icon
+                    = image_tag "book.png", alt: "", class: "icon-default"
+                    = image_tag "jimcarrey.png", alt: "", class: "icon-variant"
+                    = image_tag "animal.png", alt: "", class: "icon-variant"
+                    = image_tag "maple-syrup.png", alt: "", class: "icon-variant"
+                %a.amazon-btn.au.random-hover{href: "https://www.amazon.com.au/dp/B0GLNN3B2B", target: "_blank", rel: "noopener"}
+                  .btn-text
+                    %span Amazon Australia
+                  .btn-icon
+                    = image_tag "book.png", alt: "", class: "icon-default"
+                    = image_tag "australia.png", alt: "", class: "icon-variant"
+                    = image_tag "koala.png", alt: "", class: "icon-variant"
+                    = image_tag "person.png", alt: "", class: "icon-variant"
+                    = image_tag "gods.png", alt: "", class: "icon-variant"
+                %a.amazon-btn.uk.random-hover{href: "https://www.amazon.co.uk/dp/B0GLNN3B2B", target: "_blank", rel: "noopener"}
+                  .btn-text
+                    %span Amazon Reino Unido
+                  .btn-icon
+                    = image_tag "book.png", alt: "", class: "icon-default"
+                    = image_tag "balcony.png", alt: "", class: "icon-variant"
+                    = image_tag "bus.png", alt: "", class: "icon-variant"
+                    = image_tag "guard.png", alt: "", class: "icon-variant"
+                %a.amazon-btn.de.random-hover{href: "https://www.amazon.de/dp/B0GLNN3B2B", target: "_blank", rel: "noopener"}
+                  .btn-text
+                    %span Amazon Alemania
+                  .btn-icon
+                    = image_tag "book.png", alt: "", class: "icon-default"
+                    = image_tag "oktoberfest.png", alt: "", class: "icon-variant"
+                    = image_tag "sausage.png", alt: "", class: "icon-variant"
+                    = image_tag "einstein.png", alt: "", class: "icon-variant"
+                %a.amazon-btn.ie.random-hover{href: "https://www.amazon.ie/dp/B0GLNN3B2B", target: "_blank", rel: "noopener"}
+                  .btn-text
+                    %span Amazon Irlanda
+                  .btn-icon
+                    = image_tag "book.png", alt: "", class: "icon-default"
+                    = image_tag "hat.png", alt: "", class: "icon-variant"
+                    = image_tag "beer.png", alt: "", class: "icon-variant"
+                    = image_tag "drunk.png", alt: "", class: "icon-variant"
+                    = image_tag "clover-leaf.png", alt: "", class: "icon-variant"
               %button#pedir.animated.review-btn{type: "button", :data=>{"reveal-id" => "pedirLibro"}}
                 .svg-wrapper-1
                   .svg-wrapper
