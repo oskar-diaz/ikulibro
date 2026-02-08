@@ -78,6 +78,17 @@ $(function () {
     e.preventDefault();
   });
 
+  $(".news-toggle").on("click", function () {
+    var $news = $(this).closest(".news");
+    var isExpanded = $news.hasClass("is-expanded");
+    var expandedLabel = $(this).data("expanded-label");
+    var collapsedLabel = $(this).data("collapsed-label");
+
+    $news.toggleClass("is-expanded");
+    $(this).attr("aria-expanded", isExpanded ? "false" : "true");
+    $(this).attr("aria-label", isExpanded ? collapsedLabel : expandedLabel);
+  });
+
   setInterval(function () {
     $("#reacciones").removeClass("bounceInRight").toggleClass("tada");
   }, 5000);
