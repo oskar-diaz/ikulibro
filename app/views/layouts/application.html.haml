@@ -1,9 +1,66 @@
 !!!
-%html{lang: "en"}
+%html{lang: "es"}
   %head
+    - page_title = content_for?(:title) ? yield(:title) : "Afinando un sueño — El ikulibro de Oskar Díaz Toscano"
+    - page_description = content_for?(:meta_description) ? yield(:meta_description) : "Afinando un sueño (el ikulibro): reedición revisada y ampliada del libro de Oskar Díaz Toscano. Disponible en Amazon. Japón, ikusuki e ikulibro en un mismo viaje literario."
+    - canonical_url = content_for?(:canonical) ? yield(:canonical) : "#{request.base_url}#{request.path}"
+    - og_image = content_for?(:og_image) ? yield(:og_image) : asset_url("big_cover.jpg")
+    - og_type = content_for?(:og_type) ? yield(:og_type) : "book"
     %meta{charset: "utf-8"}/
     %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
-    %title Afinando un sueño, el ikulibro
+    %title= page_title
+    %meta{name: "description", content: page_description}/
+    %meta{name: "keywords", content: "ikulibro, ikusuki, Japón, Afinando un sueño, Oskar Díaz Toscano, libro, Amazon, reedición"}/
+    %meta{name: "author", content: "Oskar Díaz Toscano"}/
+    %meta{name: "robots", content: "index, follow"}/
+    %meta{name: "theme-color", content: "#f3d31a"}/
+    %link{rel: "canonical", href: canonical_url}/
+    %link{rel: "icon", href: "/favicon.ico"}/
+    %link{rel: "apple-touch-icon", href: asset_path("book.png")}/
+    %link{rel: "preconnect", href: "https://fonts.googleapis.com"}/
+    %link{rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: true}/
+    %meta{property: "og:site_name", content: "Ikulibro"}/
+    %meta{property: "og:title", content: page_title}/
+    %meta{property: "og:description", content: page_description}/
+    %meta{property: "og:type", content: og_type}/
+    %meta{property: "og:url", content: canonical_url}/
+    %meta{property: "og:image", content: og_image}/
+    %meta{property: "og:image:alt", content: "Portada de Afinando un sueño"}/
+    %meta{property: "og:locale", content: "es_ES"}/
+    %meta{property: "book:author", content: "Oskar Díaz Toscano"}/
+    %meta{name: "twitter:card", content: "summary_large_image"}/
+    %meta{name: "twitter:title", content: page_title}/
+    %meta{name: "twitter:description", content: page_description}/
+    %meta{name: "twitter:image", content: og_image}/
+    %script{type: "application/ld+json"}
+      :plain
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebSite",
+              "name": "Ikulibro",
+              "url": "#{canonical_url}",
+              "inLanguage": "es"
+            },
+            {
+              "@type": "Book",
+              "name": "Afinando un sueño",
+              "author": {
+                "@type": "Person",
+                "name": "Oskar Díaz Toscano"
+              },
+              "description": "Reedición revisada y ampliada del ikulibro Afinando un sueño.",
+              "inLanguage": "es",
+              "image": "#{og_image}",
+              "url": "#{canonical_url}",
+              "publisher": {
+                "@type": "Organization",
+                "name": "Ikulibro"
+              }
+            }
+          ]
+        }
     = stylesheet_link_tag  "application"
     %link{href: "https://fonts.googleapis.com/css?family=Neucha", rel: "stylesheet", type: "text/css"}/
     %link{href: "https://fonts.googleapis.com/css2?family=Farsan&display=swap", rel: "stylesheet", type: "text/css"}/
@@ -28,7 +85,7 @@
             Afinando un sueño
             %small El ikulibro
         %a.download-book{href: "/afinando-un-sueno-ikulibro-original.pdf"}
-          = image_tag "download-book.png", alt: ""
+          = image_tag "download-book.png", alt: "Descarga la primera edición en PDF"
           .download-text
             %span Descarga la primera edición en PDF gratis aquí
             %small Click para verlo en el navegador, click derecho para descargar
