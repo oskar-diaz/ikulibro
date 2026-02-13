@@ -89,14 +89,20 @@
           .news
             %h5 Noticias
             %p.news-latest
-              %span.news-date 10 Feb
+              %span.news-date 13 Feb
               %span.news-note
-                Alcanzado cuarto puesto en
-                %a{href: "https://www.amazon.es/-/en/gp/bestsellers/books/902731031/ref=pd_zg_hrsr_books", target: "_blank", rel: "noopener"} literatura de viajes
-                en Amazon España! Número 74 en
-                %a{href: "https://www.amazon.es/-/en/gp/bestsellers/books/902499031/ref=zg_bs_pg_2_books?ie=UTF8&pg=2", target: "_blank", rel: "noopener"} autobiografías!
+                La versión kindle está en cuarto puesto en la categoría de
+                = succeed ", a un puesto del Reverte !!" do
+                  %a{href: "https://www.amazon.es/gp/bestsellers/digital-text/1349506031/ref=pd_zg_hrsr_digital-text", target: "_blank", rel: "noopener"} Diarios y cartas
             %button.news-toggle{type: "button", aria: { expanded: "false", label: "Ver todas" }, data: { expanded_label: "Ocultar el resto", collapsed_label: "Ver todas" }}
             .news-archive
+              %p
+                %span.news-date 10 Feb
+                %span.news-note
+                  Alcanzado cuarto puesto en
+                  %a{href: "https://www.amazon.es/-/en/gp/bestsellers/books/902731031/ref=pd_zg_hrsr_books", target: "_blank", rel: "noopener"} literatura de viajes
+                  en Amazon España! Número 74 en
+                  %a{href: "https://www.amazon.es/-/en/gp/bestsellers/books/902499031/ref=zg_bs_pg_2_books?ie=UTF8&pg=2", target: "_blank", rel: "noopener"} autobiografías!
               %p
                 %span.news-date 9 Feb
                 %span.news-note
@@ -128,12 +134,20 @@
             .insta-grid
               .insta-card
                 %p.insta-title Presentación de la nueva edición
-                %blockquote.instagram-media{data: { instgrm_captioned: true, instgrm_permalink: "https://www.instagram.com/p/DUUzTEjEfaQ/" }}
+                %blockquote.instagram-media{data: { instgrm_captioned: false, instgrm_permalink: "https://www.instagram.com/p/DUUzTEjEfaQ/" }}
                   %a{href: "https://www.instagram.com/p/DUUzTEjEfaQ/"} Ver en Instagram
               .insta-card
                 %p.insta-title Aclaración del formato sólo texto
-                %blockquote.instagram-media{data: { instgrm_captioned: true, instgrm_permalink: "https://www.instagram.com/p/DUU5619ESCh/" }}
+                %blockquote.instagram-media{data: { instgrm_captioned: false, instgrm_permalink: "https://www.instagram.com/p/DUU5619ESCh/" }}
                   %a{href: "https://www.instagram.com/p/DUU5619ESCh/"} Ver en Instagram
+              .insta-card
+                %p.insta-title Alcohol, sushi y besos por docenas
+                %blockquote.instagram-media{data: { instgrm_captioned: false, instgrm_permalink: "https://www.instagram.com/p/DUpFXqlCZFd/" }}
+                  %a{href: "https://www.instagram.com/p/DUpFXqlCZFd/"} Ver en Instagram
+              .insta-card
+                %p.insta-title Un gaijin salvaje apareció
+                %blockquote.instagram-media{data: { instgrm_captioned: false, instgrm_permalink: "https://www.instagram.com/p/DUsYLxKiecf/" }}
+                  %a{href: "https://www.instagram.com/p/DUsYLxKiecf/"} Ver en Instagram
               .insta-card
                 %p.insta-title Lectura del libro original
                 %iframe.yt-frame{src: "https://www.youtube.com/embed/videoseries?list=PLpP9iOt7x41jQR4aAarrZhW1IMKWmiych", title: "Lectura del libro original", allowfullscreen: true, allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share", frameborder: "0"}
