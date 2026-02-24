@@ -212,9 +212,41 @@ a:hover
   margin-left: auto
   margin-right: 0
 .bookshelf figure.details-open .buttons,
-.bookshelf figure.details-open .next
-  opacity: 0
-  pointer-events: none
+.bookshelf figure.details-open .next,
+.bookshelf figure.details-open figcaption
+  display: none
+
+.bookshelf figure.details-open .details
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  visibility: visible
+  opacity: 1
+  z-index: 10
+
+@media screen and (min-width: 641px)
+  .bookshelf figure.details-open
+    width: 100%
+    max-width: 900px
+    text-align: left
+  .bookshelf figure.details-open .perspective
+    float: left
+    width: 180px
+  .bookshelf figure.details-open .details
+    position: relative
+    top: auto
+    left: auto
+    width: auto
+    margin-left: 220px
+    z-index: 1
+  .bookshelf figure.details-open .details ul
+    padding: 18px 22px
+    background: #fff
+    border-radius: 12px
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12)
+  .bookshelf figure.details-open::before
+    display: none
 .review-btn
   font-family: inherit
   font-size: 20px
@@ -690,6 +722,46 @@ a:hover
   .social-links li
     width: auto
     display: block
+
+@media screen and (max-width: 640px)
+  .bookshelf figure.details-open
+    width: 100%
+    max-width: 100%
+    padding: 12px 0 20px
+    text-align: center
+  .bookshelf figure.details-open .perspective
+    float: none
+    width: 180px
+    height: 260px
+    margin: 0 auto 12px
+  .csstransformspreserve3d .bookshelf figure.details-open .book
+    -webkit-transform: translateX(-8px) rotateY(78deg) !important
+    transform: translateX(-8px) rotateY(78deg) !important
+  .bookshelf figure.details-open .details
+    position: relative
+    top: auto
+    left: auto
+    width: 100%
+    max-height: none
+    overflow: visible
+    z-index: 1
+  .bookshelf figure.details-open .details ul,
+  .csstransformspreserve3d .bookshelf figure.details-open .details ul
+    padding: 14px
+    background: #fff
+    border-radius: 10px
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12)
+    text-align: left
+  .bookshelf figure.details-open .details ul li
+    margin-bottom: 10px
+  .bookshelf figure.details-open .details ul li:first-child
+    font-size: 13px
+    padding-bottom: 10px
+  .bookshelf figure.details-open .details .small-details
+    font-size: 15px
+    line-height: 1.3
+  .bookshelf figure.details-open::before
+    display: none
 
 @media screen and (max-width: 900px) and (orientation: landscape)
   .bb-custom-wrapper

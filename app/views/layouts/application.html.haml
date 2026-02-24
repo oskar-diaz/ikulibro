@@ -89,13 +89,21 @@
           .news
             %h5 Noticias
             %p.news-latest
-              %span.news-date 20 Feb
+              %span.news-date 24 Feb
               %span.news-note
-                Cambiado completo el texto que aparece al pulsar en link de "Detalles".
+                Añadido vídeo con la lectura de "Ese es mi sitio".
                 %br
-                66 pedidos tramitados! ya quedan menos para los 100!
+                Número de pedidos procesados asciende a 72.
+                %br
+                Preparando presentación del libro para una academia de japonés
             %button.news-toggle{type: "button", aria: { expanded: "false", label: "Ver todas" }, data: { expanded_label: "Ocultar el resto", collapsed_label: "Ver todas" }}
             .news-archive
+              %p
+                %span.news-date 20 Feb
+                %span.news-note
+                  Cambiado completo el texto que aparece al pulsar en link de "Detalles".
+                  %br
+                  66 pedidos tramitados! ya quedan menos para los 100!
               %p
                 %span.news-date 18 Feb
                 %span.news-note
@@ -170,6 +178,10 @@
                 %p.insta-title Lectura parcial: Mis vergüenzas
                 %blockquote.instagram-media{data: { instgrm_captioned: false, instgrm_permalink: "https://www.instagram.com/p/DU5PTxTEQv_/" }}
                   %a{href: "https://www.instagram.com/p/DU5PTxTEQv_/"} Ver en Instagram
+              .insta-card
+                %p.insta-title Lectura: Ese es mi sitio
+                %blockquote.instagram-media{data: { instgrm_captioned: false, instgrm_permalink: "https://www.instagram.com/p/DVITDswkTZh/" }}
+                  %a{href: "https://www.instagram.com/p/DVITDswkTZh/"} Ver en Instagram
               .insta-card
                 %p.insta-title Lectura del libro original
                 %iframe.yt-frame{src: "https://www.youtube.com/embed/videoseries?list=PLpP9iOt7x41jQR4aAarrZhW1IMKWmiych", title: "Lectura del libro original", allowfullscreen: true, allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share", frameborder: "0"}
