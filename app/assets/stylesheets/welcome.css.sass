@@ -441,10 +441,13 @@ a:hover
     margin: 0
     display: flex
     align-items: flex-start
-    flex-wrap: wrap
+    flex-wrap: nowrap
     gap: 8px
     row-gap: 4px
+  p + p
+    margin-top: 8px
   .news-date
+    flex: 0 0 auto
     font-weight: 700
     margin-right: 8px
     font-size: 12px
@@ -455,6 +458,9 @@ a:hover
     background: #fff
     box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15)
   .news-note
+    display: block
+    flex: 1 1 auto
+    min-width: 0
     font-weight: 700
     font-family: "Courier New", Courier, monospace
     font-size: 13px
@@ -504,6 +510,22 @@ a:hover
     font-size: 20px
     font-weight: 600
     font-family: "Farsan", cursive
+  .insta-link
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    width: 100%
+    max-width: 260px
+    padding: 10px 14px
+    border: 2px solid rgba(0, 0, 0, 0.75)
+    border-radius: 10px
+    background: #fff
+    color: #111
+    font-weight: 700
+    text-decoration: none
+  .insta-link:hover
+    background: #f7f7f7
+    color: #111
 .faq
   margin: 18px auto 24px
   padding: 16px 18px
