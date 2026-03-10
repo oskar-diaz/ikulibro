@@ -89,7 +89,7 @@ $(function () {
     $(this).attr("aria-label", isExpanded ? collapsedLabel : expandedLabel);
   });
 
-  $(".featured-review-card__toggle").on("click", function () {
+  $(document).on("click", ".featured-review-card__toggle", function () {
     var $button = $(this);
     var $card = $button.closest(".featured-review-card");
     var isExpanded = $card.hasClass("is-expanded");
@@ -100,6 +100,40 @@ $(function () {
     $card.toggleClass("is-expanded", nextExpanded);
     $button.attr("aria-expanded", nextExpanded ? "true" : "false");
     $button.attr("aria-label", nextExpanded ? expandedLabel : collapsedLabel);
+  });
+
+  $(document).on("click", ".featured-review-card__refresh", function (e) {
+    e.preventDefault();
+
+    var $button = $(this);
+    if ($button.hasClass("is-loading")) {
+      return;
+    }
+
+    var $card = $button.closest(".featured-review-card");
+    var currentReviewId = $card.data("review-id");
+
+    $button.addClass("is-loading").attr("aria-busy", "true");
+
+    $.ajax({
+      type: "GET",
+      url: $button.attr("href"),
+      dataType: "html",
+      data: { exclude_review_id: currentReviewId },
+    })
+      .done(function (html) {
+        if (!html || !$.trim(html)) {
+          return;
+        }
+
+        var $newCard = $(html);
+        if ($newCard.length) {
+          $card.replaceWith($newCard);
+        }
+      })
+      .always(function () {
+        $button.removeClass("is-loading").removeAttr("aria-busy");
+      });
   });
 
   setInterval(function () {

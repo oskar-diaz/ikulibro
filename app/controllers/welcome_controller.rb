@@ -1,18 +1,38 @@
 class WelcomeController < ApplicationController
 
   def index
-    @featured_review = pick_featured_review
+    excluded_review_ids = requested_excluded_review_ids
+    @featured_review = pick_featured_review(excluded_review_ids: excluded_review_ids)
+  end
+
+  def featured_review
+    excluded_review_ids = requested_excluded_review_ids
+    @featured_review = pick_featured_review(excluded_review_ids: excluded_review_ids)
+
+    return head :no_content unless @featured_review
+
+    render partial: "featured_review", locals: { featured_review: @featured_review }
   end
 
   private
 
-  def pick_featured_review
-    reviews = spreadsheet_reviews
-    reviews = local_reviews if reviews.empty?
-    reviews = reviews.select { |review| review.review.to_s.strip.present? }
+  def pick_featured_review(excluded_review_ids: [])
+    reviews = available_reviews.select { |review| review.review.to_s.strip.present? }
     return nil if reviews.empty?
 
-    reviews.sample
+    filtered_reviews = reviews.reject { |review| excluded_review_ids.include?(review.id.to_s) }
+    pool = filtered_reviews.any? ? filtered_reviews : reviews
+    pool.sample
+  end
+
+  def available_reviews
+    reviews = spreadsheet_reviews
+    reviews = local_reviews if reviews.empty?
+    reviews
+  end
+
+  def requested_excluded_review_ids
+    Array(params[:exclude_review_id]).map(&:to_s).reject(&:empty?)
   end
 
   def spreadsheet_reviews

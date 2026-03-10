@@ -1,0 +1,28 @@
+- review = local_assigns.fetch(:featured_review, @featured_review)
+- review_text = review.review.to_s.strip
+- collapsed_review = truncate(review_text.squish, length: 380, separator: " ")
+- long_review = review_text.squish.length > 380
+- featured_images = Array(review.images).select { |img| img&.url.to_s.strip.present? }.first(4)
+
+.featured-review-card#featured-review{data: { review_id: review.id }}
+  %a.featured-review-card__refresh{href: featured_review_path, title: "Load another random review", aria: { label: "Load another random review" }} ↻
+  %p.featured-review-card__eyebrow Reseña al azar
+  .featured-review-card__body
+    .featured-review-card__content
+      - if featured_images.any?
+        .featured-review-card__thumbs
+          - featured_images.each do |img|
+            %a.featured-review-card__thumb{href: img.url, target: "_blank", rel: "noopener"}
+              = image_tag img.url, alt: "Foto de lector/a", loading: "lazy"
+      %blockquote.featured-review-card__quote
+        %span.featured-review-card__quote-collapsed= collapsed_review
+        - if long_review
+          %span.featured-review-card__quote-full= review_text
+      - if long_review
+        %button.featured-review-card__toggle{type: "button", data: { collapsed_label: "Ver más", expanded_label: "Ver menos" }, aria: { expanded: "false", label: "Ver más" }}
+      .featured-review-card__meta
+        %span.featured-review-card__author= "— #{review.name.presence || 'Lector/a del Ikulibro'}"
+        - date_text = human_review_date(review.created_at)
+        - if date_text
+          %span.featured-review-card__date= date_text
+      %a.featured-review-card__link{href: "/reviews"} Ver todas las reseñas
