@@ -89,6 +89,19 @@ $(function () {
     $(this).attr("aria-label", isExpanded ? collapsedLabel : expandedLabel);
   });
 
+  $(".featured-review-card__toggle").on("click", function () {
+    var $button = $(this);
+    var $card = $button.closest(".featured-review-card");
+    var isExpanded = $card.hasClass("is-expanded");
+    var expandedLabel = $button.data("expanded-label") || "Ver menos";
+    var collapsedLabel = $button.data("collapsed-label") || "Ver más";
+    var nextExpanded = !isExpanded;
+
+    $card.toggleClass("is-expanded", nextExpanded);
+    $button.attr("aria-expanded", nextExpanded ? "true" : "false");
+    $button.attr("aria-label", nextExpanded ? expandedLabel : collapsedLabel);
+  });
+
   setInterval(function () {
     $("#reacciones").removeClass("bounceInRight").toggleClass("tada");
   }, 5000);
