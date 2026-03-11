@@ -1,12 +1,16 @@
 - review = local_assigns.fetch(:featured_review, @featured_review)
+- review_source = local_assigns.fetch(:featured_review_source, "")
+- review_uid = local_assigns.fetch(:featured_review_uid, review.id)
 - review_text = review.review.to_s.strip
 - collapsed_review = truncate(review_text.squish, length: 380, separator: " ")
 - long_review = review_text.squish.length > 380
 - featured_images = Array(review.images).select { |img| img&.url.to_s.strip.present? }.first(4)
 
-.featured-review-card#featured-review{data: { review_id: review.id }}
+.featured-review-card#featured-review{data: { review_id: review_uid }}
   %a.featured-review-card__refresh{href: featured_review_path, title: "Load another random review", aria: { label: "Load another random review" }} ↻
   %p.featured-review-card__eyebrow Reseña al azar
+  - if review_source.present?
+    %p.featured-review-card__edition= review_source
   .featured-review-card__body
     .featured-review-card__content
       - if featured_images.any?

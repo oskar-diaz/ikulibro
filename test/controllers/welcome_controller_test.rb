@@ -1,10 +1,15 @@
 require 'test_helper'
 
 class WelcomeControllerTest < ActionController::TestCase
-  test "should get index with featured review" do
+  test "should get index" do
     get :index
 
     assert_response :success
-    assert_not_nil assigns(:featured_review)
+  end
+
+  test "should get featured review partial" do
+    get :featured_review
+
+    assert_response :success
   end
 end

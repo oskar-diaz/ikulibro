@@ -31,6 +31,20 @@ a:hover
   box-shadow: 0 10px 24px rgba(58, 36, 0, 0.12)
   position: relative
   overflow: hidden
+.featured-review-container
+  min-height: 82px
+.featured-review-container.is-loading
+  opacity: 0.9
+.featured-review-loading
+  max-width: 780px
+  margin: 18px auto 26px
+  padding: 14px 18px
+  text-align: center
+  border-radius: 14px
+  border: 1px dashed rgba(0, 0, 0, 0.18)
+  color: #5f5a52
+  font-size: 13px
+  background: rgba(255, 255, 255, 0.72)
 .featured-review-card:before
   content: "“"
   position: absolute
@@ -47,6 +61,20 @@ a:hover
   text-transform: uppercase
   color: #7d5a1c
   font-weight: 700
+  position: relative
+  z-index: 1
+.featured-review-card__edition
+  margin: -4px 0 10px
+  display: inline-block
+  padding: 3px 10px
+  border-radius: 999px
+  font-size: 11px
+  font-weight: 700
+  letter-spacing: 0.04em
+  text-transform: uppercase
+  color: #5e4a1d
+  background: rgba(221, 142, 4, 0.14)
+  border: 1px solid rgba(125, 90, 28, 0.22)
   position: relative
   z-index: 1
 .featured-review-card__refresh
@@ -188,6 +216,8 @@ a:hover
     grid-template-columns: repeat(4, minmax(0, 1fr))
 
 @media screen and (min-width: 900px)
+  .featured-review-loading
+    max-width: 860px
   .featured-review-card
     width: 100%
     max-width: 860px

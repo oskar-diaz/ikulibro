@@ -89,6 +89,50 @@ $(function () {
     $(this).attr("aria-label", isExpanded ? collapsedLabel : expandedLabel);
   });
 
+  var $featuredReviewContainer = $("#featured-review-container");
+  var loadFeaturedReview = function (excludedReviewId) {
+    if ($featuredReviewContainer.length === 0 || $featuredReviewContainer.hasClass("is-loading")) {
+      return;
+    }
+
+    var url = $featuredReviewContainer.data("url");
+    if (!url) {
+      return;
+    }
+
+    var requestData = {};
+    if (excludedReviewId) {
+      requestData.exclude_review_id = excludedReviewId;
+    }
+
+    $featuredReviewContainer.addClass("is-loading");
+
+    $.ajax({
+      type: "GET",
+      url: url,
+      dataType: "html",
+      data: requestData,
+    })
+      .done(function (html) {
+        if (html && $.trim(html)) {
+          $featuredReviewContainer.html(html);
+          return;
+        }
+
+        $featuredReviewContainer.html('<p class="featured-review-loading">No hay reseñas disponibles ahora mismo.</p>');
+      })
+      .fail(function () {
+        if ($featuredReviewContainer.find(".featured-review-card").length === 0) {
+          $featuredReviewContainer.html('<p class="featured-review-loading">No se ha podido cargar la reseña.</p>');
+        }
+      })
+      .always(function () {
+        $featuredReviewContainer.removeClass("is-loading");
+      });
+  };
+
+  loadFeaturedReview();
+
   $(document).on("click", ".featured-review-card__toggle", function () {
     var $button = $(this);
     var $card = $button.closest(".featured-review-card");
@@ -104,36 +148,8 @@ $(function () {
 
   $(document).on("click", ".featured-review-card__refresh", function (e) {
     e.preventDefault();
-
-    var $button = $(this);
-    if ($button.hasClass("is-loading")) {
-      return;
-    }
-
-    var $card = $button.closest(".featured-review-card");
-    var currentReviewId = $card.data("review-id");
-
-    $button.addClass("is-loading").attr("aria-busy", "true");
-
-    $.ajax({
-      type: "GET",
-      url: $button.attr("href"),
-      dataType: "html",
-      data: { exclude_review_id: currentReviewId },
-    })
-      .done(function (html) {
-        if (!html || !$.trim(html)) {
-          return;
-        }
-
-        var $newCard = $(html);
-        if ($newCard.length) {
-          $card.replaceWith($newCard);
-        }
-      })
-      .always(function () {
-        $button.removeClass("is-loading").removeAttr("aria-busy");
-      });
+    var currentReviewId = $(this).closest(".featured-review-card").data("review-id");
+    loadFeaturedReview(currentReviewId);
   });
 
   setInterval(function () {

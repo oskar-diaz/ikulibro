@@ -200,8 +200,8 @@
                   %br
                   %br
                   Disponible en papel y en formato electrónico.
-          - if @featured_review
-            = render partial: "featured_review", locals: { featured_review: @featured_review }
+          #featured-review-container.featured-review-container{data: { url: featured_review_path }}
+            %p.featured-review-loading Cargando reseña...
 
       / /main
     / /container
