@@ -89,11 +89,17 @@
           .news
             %h5 Noticias
             %p.news-latest
-              %span.news-date 18 Mar
+              %span.news-date 20 Mar
               %span.news-note
-                ¡¡ Procesados 100 pedidos !! ¡¡ muchas gracias a todos !!, las personas que compraron el libro el día 17 de Marzo, por favor que se pongan en contacto conmigo para que les envíe un regalo!
+                Para celebrar los primeros 100 ejemplares vendidos del libro, haré un sorteo de una muñeca Kokeshi entre todas las reseñas que lleguen por la web.
+                = succeed "!" do
+                  %a{href: "https://www.instagram.com/p/DWFmxuQksBm/", target: "_blank", rel: "noopener"} Aquí se explica en Instagram
             %button.news-toggle{type: "button", aria: { expanded: "false", label: "Ver todas" }, data: { expanded_label: "Ocultar el resto", collapsed_label: "Ver todas" }}
             .news-archive
+              %p
+                %span.news-date 18 Mar
+                %span.news-note
+                  ¡¡ Procesados 100 pedidos !! ¡¡ muchas gracias a todos !!, las personas que compraron el libro el día 17 de Marzo, por favor que se pongan en contacto conmigo para que les envíe un regalo!
               %p
                 %span.news-date 11 Mar
                 %span.news-note
