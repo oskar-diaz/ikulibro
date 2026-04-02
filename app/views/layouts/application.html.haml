@@ -89,13 +89,17 @@
           .news
             %h5 Noticias
             %p.news-latest
-              %span.news-date 20 Mar
+              %span.news-date 2 Abr
               %span.news-note
-                Para celebrar los primeros 100 ejemplares vendidos del libro, haré un sorteo de una muñeca Kokeshi entre todas las reseñas que lleguen por la web.
-                = succeed "!" do
-                  %a{href: "https://www.instagram.com/p/DWFmxuQksBm/", target: "_blank", rel: "noopener"} Aquí se explica en Instagram
+                Añadido vídeo con la lectura parcial de Tomomi-chan
             %button.news-toggle{type: "button", aria: { expanded: "false", label: "Ver todas" }, data: { expanded_label: "Ocultar el resto", collapsed_label: "Ver todas" }}
             .news-archive
+              %p
+                %span.news-date 20 Mar
+                %span.news-note
+                  Para celebrar los primeros 100 ejemplares vendidos del libro, haré un sorteo de una muñeca Kokeshi entre todas las reseñas que lleguen por la web.
+                  = succeed "!" do
+                    %a{href: "https://www.instagram.com/p/DWFmxuQksBm/", target: "_blank", rel: "noopener"} Aquí se explica en Instagram
               %p
                 %span.news-date 18 Mar
                 %span.news-note
@@ -210,6 +214,9 @@
           .insta-videos
             %h5 Videos relacionados
             .insta-grid
+              .insta-card
+                %p.insta-title Lectura de Tomomi-chan
+                %iframe.insta-frame{src: "https://www.instagram.com/p/DWoKkyqyNd3/embed", title: "Lectura de Tomomi-chan", loading: "lazy", frameborder: "0", scrolling: "no", allowtransparency: true, allowfullscreen: true}
               .insta-card
                 %p.insta-title Presentación de la nueva edición
                 %iframe.insta-frame{src: "https://www.instagram.com/p/DUUzTEjEfaQ/embed", title: "Presentación de la nueva edición", loading: "lazy", frameborder: "0", scrolling: "no", allowtransparency: true, allowfullscreen: true}
