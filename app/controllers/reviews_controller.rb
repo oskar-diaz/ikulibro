@@ -10,6 +10,12 @@ class ReviewsController < ApplicationController
 
     @reviews_crowdfunding = ReviewStore.from_csv_url(crowdfunding_url)
     @reviews_amazon = ReviewStore.from_csv_url(amazon_url)
+    @active_tab = valid_tab(params[:tab]) || "crowdfunding"
   end
 
+  private
+
+  def valid_tab(value)
+    value.to_s.in?(%w[crowdfunding amazon]) ? value.to_s : nil
+  end
 end
