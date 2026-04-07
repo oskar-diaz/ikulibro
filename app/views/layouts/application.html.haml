@@ -89,13 +89,19 @@
           .news
             %h5 Noticias
             %p.news-latest
-              %span.news-date 6 Abr
+              %span.news-date 7 Abr
               %span.news-note
-                Recibida
-                %a{href: "/reviews?tab=amazon#amazon-review-9"} una nueva reseña
-                de la reedición. Esta me ha llegado muy dentro... millones de gracias, Adrián...
+                Añadido enlace a
+                %a{href: "/reviews"} las reseñas
+                y botón de compartir que copia el enlace para poder pegarlo por ahí en las redes. Si os gusta alguna reseña, compartidla por ahí que a mi me dará gustico cósmico ikigai wabisabi!
             %button.news-toggle{type: "button", aria: { expanded: "false", label: "Ver todas" }, data: { expanded_label: "Ocultar el resto", collapsed_label: "Ver todas" }}
             .news-archive
+              %p
+                %span.news-date 6 Abr
+                %span.news-note
+                  Recibida
+                  %a{href: "/reviews?tab=amazon#amazon-review-9"} una nueva reseña
+                  de la reedición. Esta me ha llegado muy dentro... millones de gracias, Adrián...
               %p
                 %span.news-date 2 Abr
                 %span.news-note

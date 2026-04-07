@@ -20,8 +20,15 @@
   .reviews-panel{data: { tab: "crowdfunding" }, style: ("display: block;" if active_tab == "crowdfunding")}
     - if @reviews_crowdfunding.any?
       -@reviews_crowdfunding.each_with_index do |review,idx|
-        .review{id: "crowdfunding-review-#{idx + 1}", :class => (idx % 2 ==0 ? "a" : "b")}
-          %p.name=review.name
+        - review_dom_id = "crowdfunding-review-#{idx + 1}"
+        - review_link = reviews_path(tab: "crowdfunding", anchor: review_dom_id)
+        - review_share_link = reviews_url(tab: "crowdfunding", anchor: review_dom_id)
+        .review{id: review_dom_id, :class => (idx % 2 ==0 ? "a" : "b")}
+          .review-header
+            %p.name
+              %a.review-link{href: review_link}= review.name
+            %button.review-share{type: "button", data: { share_url: review_share_link, copied_label: "Enlace copiado", default_label: "Compartir" }, aria: { label: "Copiar enlace de esta reseña" }}
+              Compartir
           .text
             = simple_format review.review
           - if review.images
@@ -41,8 +48,15 @@
   .reviews-panel{data: { tab: "amazon" }, style: ("display: block;" if active_tab == "amazon")}
     - if @reviews_amazon.any?
       -@reviews_amazon.each_with_index do |review,idx|
-        .review{id: "amazon-review-#{idx + 1}", :class => (idx % 2 ==0 ? "a" : "b")}
-          %p.name=review.name
+        - review_dom_id = "amazon-review-#{idx + 1}"
+        - review_link = reviews_path(tab: "amazon", anchor: review_dom_id)
+        - review_share_link = reviews_url(tab: "amazon", anchor: review_dom_id)
+        .review{id: review_dom_id, :class => (idx % 2 ==0 ? "a" : "b")}
+          .review-header
+            %p.name
+              %a.review-link{href: review_link}= review.name
+            %button.review-share{type: "button", data: { share_url: review_share_link, copied_label: "Enlace copiado", default_label: "Compartir" }, aria: { label: "Copiar enlace de esta reseña" }}
+              Compartir
           .text
             = simple_format review.review
           - if review.images
