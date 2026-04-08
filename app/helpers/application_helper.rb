@@ -18,4 +18,16 @@ module ApplicationHelper
   rescue ArgumentError, TypeError
     nil
   end
+
+  def review_number_font_size(review)
+    text_length = review.review.to_s.squish.length
+    image_bonus = Array(review.images).count * 180
+    effective_length = [text_length + image_bonus, 1800].min
+
+    min_size = 1100.0
+    max_size = 3200.0
+    scaled_size = min_size + (effective_length / 1800.0) * (max_size - min_size)
+
+    "#{scaled_size.round}%"
+  end
 end

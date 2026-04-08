@@ -32,7 +32,6 @@ $(function () {
 
   var $copyToast = $('.reviews-copy-toast');
   var copyToastTimer = null;
-  var copyButtonTimer = null;
 
   if ($copyToast.length === 0) {
     $copyToast = $('<div class="reviews-copy-toast" role="status" aria-live="polite"></div>');
@@ -53,22 +52,6 @@ $(function () {
 
     copyToastTimer = window.setTimeout(function () {
       $copyToast.removeClass('is-visible');
-    }, 1800);
-  };
-
-  var showCopiedState = function ($button, copiedLabel, defaultLabel) {
-    if ($button.length === 0) {
-      return;
-    }
-
-    $button.text(copiedLabel);
-
-    if (copyButtonTimer) {
-      window.clearTimeout(copyButtonTimer);
-    }
-
-    copyButtonTimer = window.setTimeout(function () {
-      $button.text(defaultLabel);
     }, 1800);
   };
 
@@ -103,7 +86,6 @@ $(function () {
     var $button = $(this);
     var shareUrl = $button.data('share-url');
     var copiedLabel = $button.data('copied-label') || 'Enlace copiado';
-    var defaultLabel = $button.data('default-label') || 'Compartir';
 
     if (!shareUrl) {
       return;
@@ -111,7 +93,6 @@ $(function () {
 
     copyText(shareUrl)
       .then(function () {
-        showCopiedState($button, copiedLabel, defaultLabel);
         showCopyToast(copiedLabel);
       })
       .catch(function () {

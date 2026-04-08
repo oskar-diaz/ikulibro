@@ -23,12 +23,13 @@
         - review_dom_id = "crowdfunding-review-#{idx + 1}"
         - review_link = reviews_path(tab: "crowdfunding", anchor: review_dom_id)
         - review_share_link = reviews_url(tab: "crowdfunding", anchor: review_dom_id)
+        - review_number_size = review_number_font_size(review)
         .review{id: review_dom_id, :class => (idx % 2 ==0 ? "a" : "b")}
           .review-header
             %p.name
               %a.review-link{href: review_link}= review.name
-            %button.review-share{type: "button", data: { share_url: review_share_link, copied_label: "Enlace copiado", default_label: "Compartir" }, aria: { label: "Copiar enlace de esta reseña" }}
-              Compartir
+            %button.review-share{type: "button", data: { share_url: review_share_link, copied_label: "Enlace copiado" }, aria: { label: "Copiar enlace de esta reseña" }}
+              = image_tag "share-icon.png", alt: "", class: "review-share-icon"
           .text
             = simple_format review.review
           - if review.images
@@ -37,7 +38,7 @@
           - date_text = human_review_date(review.created_at)
           - if date_text
             %p.review-date= date_text
-          .n="#{idx+1}"
+          .n{style: "font-size: #{review_number_size};"}="#{idx+1}"
         - unless idx + 1 == @reviews_crowdfunding.size
 
           %hr
@@ -51,12 +52,13 @@
         - review_dom_id = "amazon-review-#{idx + 1}"
         - review_link = reviews_path(tab: "amazon", anchor: review_dom_id)
         - review_share_link = reviews_url(tab: "amazon", anchor: review_dom_id)
+        - review_number_size = review_number_font_size(review)
         .review{id: review_dom_id, :class => (idx % 2 ==0 ? "a" : "b")}
           .review-header
             %p.name
               %a.review-link{href: review_link}= review.name
-            %button.review-share{type: "button", data: { share_url: review_share_link, copied_label: "Enlace copiado", default_label: "Compartir" }, aria: { label: "Copiar enlace de esta reseña" }}
-              Compartir
+            %button.review-share{type: "button", data: { share_url: review_share_link, copied_label: "Enlace copiado" }, aria: { label: "Copiar enlace de esta reseña" }}
+              = image_tag "share-icon.png", alt: "", class: "review-share-icon"
           .text
             = simple_format review.review
           - if review.images
@@ -65,7 +67,7 @@
           - date_text = human_review_date(review.created_at)
           - if date_text
             %p.review-date= date_text
-          .n="#{idx+1}"
+          .n{style: "font-size: #{review_number_size};"}="#{idx+1}"
         - unless idx + 1 == @reviews_amazon.size
 
           %hr
