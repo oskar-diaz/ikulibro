@@ -89,13 +89,22 @@
           .news
             %h5 Noticias
             %p.news-latest
-              %span.news-date 1 May
+              %span.news-date 3 May
               %span.news-note
-                Amazon España está promocionando el libro en la
-                %a{href: "https://www.amazon.es/Afinando-sue%C3%B1o-ikulibro-Oskar-D%C3%ADaz-ebook/dp/B0GM93MYKH/ref=tmm_kin_swatch_0?_encoding=UTF8&dib_tag=se&dib=eyJ2IjoiMSJ9.cR6WosTI2EDuZBal0h_WTxq_Dwq1wQDXKp4_SeKbvMk.PR9ypaEGa0bgKi0Ln8itLx60uR3aDmB6gU-tEOoebJc&qid=1777603912&sr=8-1", target: "_blank", rel: "noopener"} Tienda Kindle
-                !! el libro está a 2€ durante todo el mes de Mayo!!
+                Best seller en la tienda Kindle en las tres categorías del libro:
+                = succeed "," do
+                  %a{href: "https://www.amazon.es/gp/bestsellers/digital-text/1335572031/ref=pd_zg_hrsr_digital-text", target: "_blank", rel: "noopener"} Viajes
+                = succeed " y" do
+                  %a{href: "https://www.amazon.es/gp/bestsellers/books/902731031/ref=pd_zg_hrsr_books", target: "_blank", rel: "noopener"} Literatura de viaje
+                %a{href: "https://www.amazon.es/gp/bestsellers/digital-text/1349506031/ref=pd_zg_hrsr_digital-text", target: "_blank", rel: "noopener"} Diarios y cartas
             %button.news-toggle{type: "button", aria: { expanded: "false", label: "Ver todas" }, data: { expanded_label: "Ocultar el resto", collapsed_label: "Ver todas" }}
             .news-archive
+              %p
+                %span.news-date 1 May
+                %span.news-note
+                  Amazon España está promocionando el libro en la
+                  %a{href: "https://www.amazon.es/Afinando-sue%C3%B1o-ikulibro-Oskar-D%C3%ADaz-ebook/dp/B0GM93MYKH/ref=tmm_kin_swatch_0?_encoding=UTF8&dib_tag=se&dib=eyJ2IjoiMSJ9.cR6WosTI2EDuZBal0h_WTxq_Dwq1wQDXKp4_SeKbvMk.PR9ypaEGa0bgKi0Ln8itLx60uR3aDmB6gU-tEOoebJc&qid=1777603912&sr=8-1", target: "_blank", rel: "noopener"} Tienda Kindle
+                  !! el libro está a 2€ durante todo el mes de Mayo!!
               %p
                 %span.news-date 8 Abr
                 %span.news-note

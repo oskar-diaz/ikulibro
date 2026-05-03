@@ -634,8 +634,9 @@ a:hover
     overflow: hidden
     transition: max-height 0.4s ease, opacity 0.3s ease
   &.is-expanded .news-archive
-    max-height: 1200px
+    max-height: 320px
     opacity: 1
+    overflow-y: auto
   p
     margin: 0
     display: flex
@@ -645,13 +646,18 @@ a:hover
     row-gap: 4px
   p + p
     margin-top: 8px
+    padding-top: 8px
+    border-top: 1px solid rgba(0, 0, 0, 0.12)
   .news-date
     flex: 0 0 auto
+    width: 56px
     font-weight: 700
     margin-right: 8px
     font-size: 12px
     display: inline-block
     padding: 4px 6px
+    box-sizing: border-box
+    text-align: center
     border: 2px solid rgba(0, 0, 0, 0.7)
     border-radius: 4px
     background: #fff
